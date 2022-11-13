@@ -118,7 +118,7 @@ static int open_file( char *psz_filename, hnd_t *p_handle, video_info_t *info, c
 
     int trackno = FFMS_GetFirstTrackOfType( idx, FFMS_TYPE_VIDEO, &e );
     if( trackno >= 0 )
-        h->video_source = FFMS_CreateVideoSource( psz_filename, trackno, idx, 1, seekmode, &e );
+        h->video_source = FFMS_CreateVideoSource( psz_filename, trackno, idx, opt->demuxer_threads, seekmode, &e );
     FFMS_DestroyIndex( idx );
 
     FAIL_IF_ERROR( trackno < 0, "could not find video track\n" );
